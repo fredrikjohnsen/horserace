@@ -15,5 +15,5 @@ class Race():
             return None
 
     def setRaces(self, runs):
-        test = self.db.insert({"track": self.track, "date" : self.date, "runs" : runs})
-        return runs
+        self.db.insert({"track": self.track, "date" : self.date, "runs" : runs})
+        return self
