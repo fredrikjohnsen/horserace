@@ -16,5 +16,4 @@ class Race():
 
     def setRaces(self, runs):
         test = self.db.insert({"track": self.track, "date" : self.date, "runs" : runs})
-        print(test)
         return runs
