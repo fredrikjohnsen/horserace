@@ -8,8 +8,15 @@ class Horse():
         self.runs = []
 
     def getRaces(self):
-        race = self.db.find({"runs.name" : self.name})
+        pipeline = [
+           {"$match" : {"runs.name" : self.name}},
+            {"$unwind": "$runs"},
+            {"$match" : {"runs.name" : self.name}},
+            ]
+        race = self.db.aggregate(pipeline)
+        print(race)
         current = []
         for run in race:
-            current.append({'track' : run['track'], 'date' : run['date']})
+            print(run)
+            current.append({"horse": dumps(run)})
         return current
