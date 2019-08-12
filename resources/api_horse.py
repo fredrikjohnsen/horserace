@@ -1,9 +1,7 @@
 from flask import Flask
 from flask_restful import Resource, Api, reqparse
-from flask import request
 import json
 from models.horse import Horse
-from external.fetch_races import FetchRaces
 
 class ApiHorse(Resource):
     parser = reqparse.RequestParser()
