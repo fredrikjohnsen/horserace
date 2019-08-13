@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, Response
 from flask_restful import Resource, Api, reqparse
 from flask import request
 import json
@@ -17,4 +17,6 @@ class ApiRace(Resource):
         if not races.getRaces():
             external = FetchRaces(data['track'], data['day']).response()
             races.setRaces(external)
+        
+       
         return races.getRaces()['runs']
